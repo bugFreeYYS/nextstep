@@ -3,6 +3,7 @@ from pandas.plotting import autocorrelation_plot
 from matplotlib import pyplot
 from statsmodels.graphics.tsaplots import plot_pacf
 from .base_model import base_model
+import pandas as pd
 import sys
 
 if not sys.warnoptions:
