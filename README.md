@@ -2,9 +2,9 @@
 # nextstep
 
 # Introduction
-Nextstep integrates major popular machine learning algorithms, taking all the hassle data analysts or data scientists could possibly face when deal with multiple matching learning packages. At the same time, it lifts the programming constraints by extracting key parameters into a configuration dictionary, empowering less experienced python users the ability to explore machine learning. 
+Nextstep integrates major popular machine learning algorithms, offering data scientists an all-in-one package. At the same time, it lifts the programming constraints by extracting key hyper-parameters into a configuration dictionary, empowering less experienced python users the ability to explore machine learning. 
 
-Nextstep was originally developed for a data science challenge which involved price prediction. So it has a dedicated module to obtain data (oil and weather). It evolves into a machine learning prediction toolkit.
+Nextstep was originally developed for a data science challenge which involved price prediction. So it has a dedicated module to obtain data (oil and weather) via open API or web-scraping. It evolves into a machine learning prediction toolkit.
 
 # Installation
 First time installation
@@ -17,14 +17,14 @@ pip install nextstep --upgrade
 ```
 # Quick Tutorial
 ## getData module
-**1. generate oil prices**
+**generate oil prices**
 ```python
 from nextstep.getData.oil import *
 oil_prices.process()
 ```
 *brent_daily.csv* and *wti_daily.csv* will be generated at the current directory. They contain historical oil price until the most recent day.
 
-**2. generate weather data**
+**generate weather data**
 
 This function relies on an API key from [worldweatheronline](https://www.worldweatheronline.com/developer/). It is free for 60 days as of 27/3/2020. It will generate csv data files in the current directory.
 ```python
@@ -72,7 +72,6 @@ config = {
 	}
 arima_shell = arima(config)
 
-data = data[-300:] # get most recent readings
 arima_shell.autocorrelation(data) # plot autocorrelation to determine p, lag order
 arima_shell.partial_autocorrelation(data) # plot partial autocorrelation to determine q, moving average widow size
 arima_shell.build_model(data) # build model
@@ -82,5 +81,8 @@ arima_shell.residual_plot()
 arima_shell.residual_density_plot()
 ```
 
-# Contribution
-Contribution in any kind is welcome.
+# Contributing
+Pull requests are welcome
+
+# Author
+yuesong Yang
