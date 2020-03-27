@@ -10,7 +10,7 @@ First time installation
 ```bash
 pip install nextstep
 ```
-Upgrate to the latest version
+Upgrade to the latest version
 ```bash
 pip install nexrstep --ungrade
 ```
@@ -22,6 +22,7 @@ from nextstep.getData.oil import *
 oil_prices.process()
 ```
 *brent_daily.csv* and *wti_daily.csv* will be generated at the current directory. They contain historical oil price until the most recent day.
+
 **2. generate weather data**
 This function relies on an API key from [worldweatheronline](https://www.worldweatheronline.com/developer/). It is free for 60 days as of 27/3/2020.
 ```python
