@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="nextstep",
-    version="0.0.10",
+    version="0.0.12",
     author="Yang Yuesong",
     author_email="yangyuesongyys@gmail.com",
     description="USEP price prediction",
@@ -18,5 +18,9 @@ setuptools.setup(
         'wwo-hist == 0.0.4',
         'tensorflow == 2.1.0',
         'statsmodels == 0.11.0',
-        'dataflows == 0.0.71']
+        'dataflows == 0.0.71',
+        'Keras == 2.3.1',
+        'pandas == 1.0.1',
+        'numpy == 1.18.1',
+        'scikit-learn == 0.22.1']
 )

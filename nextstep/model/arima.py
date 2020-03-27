@@ -78,11 +78,6 @@ if __name__ == "__main__":
     import pandas as pd
     data = pd.read_csv("../../development/Feature_Mart/feature_mart_merged_1.csv")
     data = data
-
-    parameter_tuning_config = {
-        'number_of_time_step' : 30,
-        'number_of_lags' : 30
-        }
     
     user_config = {'lag' : 2,
                    'differencing' : 0,
