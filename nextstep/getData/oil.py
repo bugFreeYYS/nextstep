@@ -80,7 +80,6 @@ oil_prices = Flow(
     rename_resources,
     set_type('Date', resources=None, type='date', format='any'),
     validate(),
-    printer(),
     filter_out_empty_rows,
     dump_to_path(),
 )

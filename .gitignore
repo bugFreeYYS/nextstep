@@ -11,3 +11,8 @@
 # pycharm
 .idea/*
 **/.idea/*
+
+# distribution
+build/
+dist/
+*.egg-info/

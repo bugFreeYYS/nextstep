@@ -1,5 +1,5 @@
 from sklearn.ensemble import RandomForestRegressor
-from base_model import base_model
+from .base_model import base_model
 
 
 class random_forest(base_model):

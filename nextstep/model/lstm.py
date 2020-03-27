@@ -1,7 +1,7 @@
 from keras.models import Sequential
 from keras.layers import LSTM
 from keras.layers import Dense
-from base_model import base_model
+from .base_model import base_model
 import numpy as np
 import sys
 
@@ -9,7 +9,7 @@ if not sys.warnoptions:
     import warnings
     warnings.simplefilter("ignore")
 
-class LSTM_Univariate(base_model):
+class lstm_univariate(base_model):
     def __init__(self, config):
         super().__init__()
         self._config = config
@@ -83,5 +83,5 @@ if __name__ == "__main__":
                    'loss' : 'mse',
                    'n_epochs' : 2}
     
-    LSTM_shell = LSTM_Univariate(user_config)
+    LSTM_shell = lstm_univariate(user_config)
     LSTM_shell.build_model(data)

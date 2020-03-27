@@ -1,5 +1,5 @@
 from sklearn.ensemble import AdaBoostRegressor
-from base_model import base_model
+from .base_model import base_model
 
 
 class adaboost(base_model):
