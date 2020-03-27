@@ -1,3 +1,4 @@
+
 # nextstep
 
 # Introduction
@@ -80,3 +81,6 @@ arima_shell.build_model(data) # build model
 arima_shell.residual_plot()
 arima_shell.residual_density_plot()
 ```
+
+# Contribution
+Contribution in any kind is welcome.
