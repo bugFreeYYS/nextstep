@@ -1,3 +1,3 @@
 # nextstep
 
-this is package for EMC.
+this is package for EMC 2.
