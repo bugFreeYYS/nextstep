@@ -29,7 +29,7 @@ class sarima(base_model):
                         )
         fitted_model = model.fit()
         
-        predictions = fitted_model.predict_next_n(len(test))
+        predictions = fitted_model.forecast(steps = len(test))
 
         print('Evaluating arima performance.')
         self.evaluation(test, predictions)
@@ -43,7 +43,7 @@ class sarima(base_model):
         return model
     
     def predict(self, X_new):
-        return self._model.predict(X_new)
+        return self._model.forecast(steps = step)
 
     def predict_next_n(self, steps):
         return self._model.get_forecast(steps=steps).predicted_mean
@@ -84,12 +84,12 @@ class sarima(base_model):
     
 if __name__ == "__main__":
     import pandas as pd
-    data = pd.read_csv("/Users/yuesongyang/Desktop/feature_mart_v3.csv")
+    data = pd.read_csv("../../../feature_mart.csv")
     data = data[-500:]
     
     user_config = {
                    'label_column' : 'USEP',
-                   'train_size' : 0.99,
+                   'train_size' : 0.95,
                    'seed' : 33,
                    'trend_order' : (1, 1, 1),
                    'season_order' : (1, 0, 1, 48)
@@ -99,5 +99,5 @@ if __name__ == "__main__":
 ##    sarima_shell.autocorrelation(data)
 ##    sarima_shell.partial_autocorrelation(data)
     sarima_shell.build_model(data)
-    sarima_shell.residual_plot()
+    print(sarima_shell.predict_next_n(10))
     

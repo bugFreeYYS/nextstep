@@ -1,5 +1,5 @@
 import xgboost as xgb
-from .base_model import base_model
+from base_model import base_model
 
 
 class xgboost(base_model):
@@ -39,8 +39,8 @@ class xgboost(base_model):
     
 if __name__ == "__main__":
     import pandas as pd
-    data = pd.read_csv("../../development/Feature_Mart/feature_mart_merged_1.csv")
-    data = data.drop(['date','demand_clusters','moonrise','moonset','sunrise','sunset'], axis = 1)
+    data = pd.read_csv("../../../feature_mart.csv")
+    data = data[-100:]
     xgboost_shell = xgboost({    
                 'label_column': 'USEP',
                 'train_size' : 0.8,
