@@ -37,7 +37,7 @@ config = {
 		'location_list' : ['singapore'],
 		'location_label' : False
 		}
-data = weather(config).get_weather_data()
+weather(config).get_weather_data()
 ```
 ## model module
 Every ML model has a unique config. Please fill in accordingly.
@@ -85,4 +85,5 @@ arima_shell.residual_density_plot()
 Pull requests are welcome
 
 # Author
-yuesong Yang
+yuesong YANG
+bolin ZHU
