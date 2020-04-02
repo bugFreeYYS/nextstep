@@ -2,7 +2,7 @@ import pandas as pd
 from statsmodels.tsa.statespace.sarimax import SARIMAX
 from statsmodels.graphics.tsaplots import plot_pacf, plot_acf
 from matplotlib import pyplot
-from base_model import base_model
+from .base_model import base_model
 import sys
 
 if not sys.warnoptions:

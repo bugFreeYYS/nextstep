@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="nextstep",
-    version="0.0.14",
+    version="0.0.15",
     author="Yang Yuesong",
     author_email="yangyuesongyys@gmail.com",
     description="USEP price prediction",

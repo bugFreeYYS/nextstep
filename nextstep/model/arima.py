@@ -2,7 +2,7 @@ from statsmodels.tsa.arima_model import ARIMA
 from pandas.plotting import autocorrelation_plot
 from matplotlib import pyplot
 from statsmodels.graphics.tsaplots import plot_pacf
-from base_model import base_model
+from .base_model import base_model
 import pandas as pd
 import sys
 
