@@ -23,15 +23,13 @@ class arima(base_model):
         size = int(len(data) * self._config['train_size'])
         data = data[self._config['label_column']].values
         train, test = data[:size].tolist(), data[size:]
-        predictions = []
-        for t in range(len(test)):
-            model = ARIMA(train,
-                        order=(self._config['lag'], self._config['differencing'], self._config['window_size']))
-            fitted_model = model.fit()
-            predicted = fitted_model.forecast()[0]
-            predictions.append(predicted)
-            train.append(test[t])
 
+        model = ARIMA(train,
+                        order=(self._config['lag'], self._config['differencing'], self._config['window_size']))
+        fitted_model = model.fit()
+        
+        predictions = fitted_model.predict_next_n(len(test))
+        
         print('Evaluating arima performance.')
         self.evaluation(test, predictions)
 
@@ -43,8 +41,12 @@ class arima(base_model):
     
     def predict(self, X_new):
         return self._model.predict(X_new)
+    
+    def predict_next_n(self, steps):
+        return self._model.get_forecast(steps=steps).predicted_mean
 
     def autocorrelation(self, data, number_of_time_step = 20):
+        print("Autocorrelation")
         try:
             autocorrelation_plot(data[self._config['label_column']][:number_of_time_step])
             pyplot.show()
@@ -53,6 +55,7 @@ class arima(base_model):
         return None
     
     def partial_autocorrelation(self, data, lags = 20):
+        Print("Partial Autocorrelation")
         try:
             plot_pacf(data[self._config['label_column']], lags = lags)
             pyplot.show()
@@ -61,6 +64,7 @@ class arima(base_model):
         return None
     
     def residual_plot(self):
+        print("Residual Plot")
         df = pd.DataFrame(self._model.resid)
         df.plot()
         df.plot(kind='kde')
@@ -69,6 +73,7 @@ class arima(base_model):
         return None
     
     def residual_density_plot(self):
+        print("Residual Density Plot")
         pd.DataFrame(self._model.resid).plot(kind='kde')
         pyplot.show()
         return None        

@@ -22,16 +22,14 @@ class sarima(base_model):
         size = int(len(data) * self._config['train_size'])
         data = data[self._config['label_column']].values
         train, test = data[:size].tolist(), data[size:]
-        predictions = []
-        for t in range(len(test)):
-            model = SARIMAX(train,
-                          order=(self._config['trend_order'][0], self._config['trend_order'][1], self._config['trend_order'][2]),
-                          seasonal_order=(self._config['season_order'][0], self._config['season_order'][1], self._config['season_order'][2], self._config['season_order'][3])
-                          )
-            fitted_model = model.fit()
-            predicted = fitted_model.forecast()[0]
-            predictions.append(predicted)
-            train.append(test[t])
+        
+        model = SARIMAX(train,
+                        order=(self._config['trend_order'][0], self._config['trend_order'][1], self._config['trend_order'][2]),
+                        seasonal_order=(self._config['season_order'][0], self._config['season_order'][1], self._config['season_order'][2], self._config['season_order'][3])
+                        )
+        fitted_model = model.fit()
+        
+        predictions = fitted_model.predict_next_n(len(test))
 
         print('Evaluating arima performance.')
         self.evaluation(test, predictions)
@@ -47,7 +45,11 @@ class sarima(base_model):
     def predict(self, X_new):
         return self._model.predict(X_new)
 
+    def predict_next_n(self, steps):
+        return self._model.get_forecast(steps=steps).predicted_mean
+
     def autocorrelation(self, data, lags = 20):
+        print("Autocorrelation:")
         try:
             plot_acf(data[self._config['label_column']], lags = lags)
             pyplot.show()
@@ -56,6 +58,7 @@ class sarima(base_model):
         return None
     
     def partial_autocorrelation(self, data, lags = 20):
+        print("Partial Autocorrelation:")
         try:
             plot_pacf(data[self._config['label_column']], lags = lags)
             pyplot.show()
@@ -64,6 +67,7 @@ class sarima(base_model):
         return None
     
     def residual_plot(self):
+        print("Residual Plot:")
         df = pd.DataFrame(self._model.resid)
         df.plot()
         df.plot(kind='kde')
@@ -72,6 +76,7 @@ class sarima(base_model):
         return None
     
     def residual_density_plot(self):
+        print("Residual Density Plot:")
         pd.DataFrame(self._model.resid).plot(kind='kde')
         pyplot.show()
         return None        
