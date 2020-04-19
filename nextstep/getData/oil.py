@@ -5,7 +5,7 @@ import datetime
 from dataflows import Flow, PackageWrapper, ResourceWrapper, validate, filter_rows
 from dataflows import add_metadata, dump_to_path, load, set_type, printer
 
-def rename_resources(package: PackageWrapper):
+def _rename_resources(package: PackageWrapper):
     package.pkg.descriptor['resources'][0]['name'] = 'brent-daily'
     package.pkg.descriptor['resources'][0]['path'] = 'brent-daily.csv'
     package.pkg.descriptor['resources'][1]['name'] = 'wti-daily'
@@ -18,7 +18,7 @@ def rename_resources(package: PackageWrapper):
     yield from package
 
 
-def filter_out_empty_rows(rows):
+def _filter_out_empty_rows(rows):
     for row in rows:
         if row['Date']:
             yield row
@@ -77,13 +77,14 @@ oil_prices = Flow(
         skip_rows=[1,2,3],
         headers=['Date', 'Price']
     ),
-    rename_resources,
+    _rename_resources,
     set_type('Date', resources=None, type='date', format='any'),
     validate(),
-    filter_out_empty_rows,
+    _filter_out_empty_rows,
     dump_to_path(),
 )
 
 
-if __name__ == '__main__':
+def oil_price():
+    """CSV will be written to the current directory."""
     oil_prices.process()

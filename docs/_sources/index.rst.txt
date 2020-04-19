@@ -31,3 +31,7 @@ It evolves into a machine learning prediction toolkit.
    FE
    getData
    model
+
+.. toctree:
+   :maxdepth: 3
+   :caption: Quick Tutorial:

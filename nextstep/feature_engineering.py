@@ -1,7 +1,7 @@
 import pandas as pd
 
 class feature_engineering:
-    '''This is a fe class
+    '''feature engineering class.
     '''
     def __init__(self):
         print('successfully substantiate feature engineering class.')

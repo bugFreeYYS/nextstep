@@ -16,7 +16,7 @@ class lstm_univariate(base_model):
     def __init__(self, config):
         """constructor method
 
-        :param config: configuration for adaboost model
+        :param config: configuration for lstm model
         :type config: python dictionary
         """
         super().__init__()

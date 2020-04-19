@@ -1,5 +1,5 @@
 import xgboost as xgb
-from .base_model import base_model
+from nextstep.model.base_model import base_model
 
 
 class XGboost(base_model):
@@ -35,25 +35,3 @@ class XGboost(base_model):
     
     def predict(self, X_new):
         return self._model.predict(X_new)
-
-    
-if __name__ == "__main__":
-    import pandas as pd
-    data = pd.read_csv("../../../feature_mart.csv")
-    data = data[-100:]
-    xgboost_shell = XGboost({    
-                'label_column': 'USEP',
-                'train_size' : 0.8,
-                'seed' : 33,
-                'learning_rate': 0.1,
-                'n_estimators': 150,
-                'max_depth': 20,
-                'min_child_weight': 4,
-                'gamma': 0,
-                'subsample': 0.7,
-                'colsample_bytree': 0.8,
-                'objective': 'reg:linear',
-                'scale_pos_weight': 1,
-                'seed': 1234})
-    
-    xgboost_shell.build_model(data)

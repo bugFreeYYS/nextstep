@@ -111,4 +111,24 @@ if __name__ == "__main__":
                                     'max_features' : 'sqrt'})
     
     random_forest_shell.build_model(data)
+if __name__ == "__main__":
+    import pandas as pd
+    data = pd.read_csv("../../../feature_mart.csv")
+    data = data[-100:]
+    xgboost_shell = XGboost({    
+                'label_column': 'USEP',
+                'train_size' : 0.8,
+                'seed' : 33,
+                'learning_rate': 0.1,
+                'n_estimators': 150,
+                'max_depth': 20,
+                'min_child_weight': 4,
+                'gamma': 0,
+                'subsample': 0.7,
+                'colsample_bytree': 0.8,
+                'objective': 'reg:linear',
+                'scale_pos_weight': 1,
+                'seed': 1234})
+    
+    xgboost_shell.build_model(data)
 

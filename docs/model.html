@@ -25,7 +25,6 @@
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/language_data.js"></script>
-        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -162,31 +161,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  
-<style>
-/* CSS overrides for sphinx_rtd_theme */
-
-/* 24px margin */
-.nbinput.nblast.container,
-.nboutput.nblast.container {
-    margin-bottom: 19px;  /* padding has already 5px */
-}
-
-/* ... except between code cells! */
-.nblast.container + .nbinput.container {
-    margin-top: -19px;
-}
-
-.admonition > p:before {
-    margin-right: 4px;  /* make room for the exclamation icon */
-}
-
-/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
-.math {
-    text-align: unset;
-}
-</style>
-<div class="section" id="nextstep-model-subpackage">
+  <div class="section" id="nextstep-model-subpackage">
 <h1>nextstep.model subpackage<a class="headerlink" href="#nextstep-model-subpackage" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="module-nextstep.model.base_model">
 <span id="base-model"></span><h2>base_model<a class="headerlink" href="#module-nextstep.model.base_model" title="Permalink to this headline">¶</a></h2>
@@ -195,7 +170,6 @@
 <em class="property">class </em><code class="sig-prename descclassname">nextstep.model.base_model.</code><code class="sig-name descname">base_model</code><a class="headerlink" href="#nextstep.model.base_model.base_model" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>base model class</p>
-<p>constructor method</p>
 <dl class="py method">
 <dt id="nextstep.model.base_model.base_model.evaluation">
 <code class="sig-name descname">evaluation</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">y_pre</span></em>, <em class="sig-param"><span class="n">y_true</span></em><span class="sig-paren">)</span><a class="headerlink" href="#nextstep.model.base_model.base_model.evaluation" title="Permalink to this definition">¶</a></dt>
@@ -250,23 +224,11 @@
 </div>
 <div class="section" id="module-nextstep.model.adaboost">
 <span id="adaboost"></span><h2>adaboost<a class="headerlink" href="#module-nextstep.model.adaboost" title="Permalink to this headline">¶</a></h2>
-<dl class="py method">
-<dt id="nextstep.model.adaboost.__init__">
-<code class="sig-prename descclassname">adaboost.</code><code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#nextstep.model.adaboost.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
-</dd></dl>
-
 <dl class="py class">
 <dt id="nextstep.model.adaboost.adaboost">
 <em class="property">class </em><code class="sig-prename descclassname">nextstep.model.adaboost.</code><code class="sig-name descname">adaboost</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">config</span></em><span class="sig-paren">)</span><a class="headerlink" href="#nextstep.model.adaboost.adaboost" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#nextstep.model.base_model.base_model" title="nextstep.model.base_model.base_model"><code class="xref py py-class docutils literal notranslate"><span class="pre">nextstep.model.base_model.base_model</span></code></a></p>
 <p>adaboost class</p>
-<p>constructor method</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>config</strong> (<em>python dictionary</em>) – configuration for adaboost model</p>
-</dd>
-</dl>
 <dl class="py method">
 <dt id="nextstep.model.adaboost.adaboost.build_model">
 <code class="sig-name descname">build_model</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em><span class="sig-paren">)</span><a class="headerlink" href="#nextstep.model.adaboost.adaboost.build_model" title="Permalink to this definition">¶</a></dt>
@@ -314,12 +276,6 @@
 <em class="property">class </em><code class="sig-prename descclassname">nextstep.model.arima.</code><code class="sig-name descname">arima</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">config</span></em><span class="sig-paren">)</span><a class="headerlink" href="#nextstep.model.arima.arima" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#nextstep.model.base_model.base_model" title="nextstep.model.base_model.base_model"><code class="xref py py-class docutils literal notranslate"><span class="pre">nextstep.model.base_model.base_model</span></code></a></p>
 <p>arima class.</p>
-<p>constructor method</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>config</strong> (<em>python dictionary</em>) – configuration for adaboost model</p>
-</dd>
-</dl>
 <dl class="py method">
 <dt id="nextstep.model.arima.arima.autocorrelation">
 <code class="sig-name descname">autocorrelation</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">number_of_time_step</span><span class="o">=</span><span class="default_value">20</span></em><span class="sig-paren">)</span><a class="headerlink" href="#nextstep.model.arima.arima.autocorrelation" title="Permalink to this definition">¶</a></dt>
@@ -403,12 +359,6 @@
 <em class="property">class </em><code class="sig-prename descclassname">nextstep.model.lstm.</code><code class="sig-name descname">lstm_univariate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">config</span></em><span class="sig-paren">)</span><a class="headerlink" href="#nextstep.model.lstm.lstm_univariate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#nextstep.model.base_model.base_model" title="nextstep.model.base_model.base_model"><code class="xref py py-class docutils literal notranslate"><span class="pre">nextstep.model.base_model.base_model</span></code></a></p>
 <p>long short-term memory class.</p>
-<p>constructor method</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>config</strong> (<em>python dictionary</em>) – configuration for adaboost model</p>
-</dd>
-</dl>
 <dl class="py method">
 <dt id="nextstep.model.lstm.lstm_univariate.build_model">
 <code class="sig-name descname">build_model</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em><span class="sig-paren">)</span><a class="headerlink" href="#nextstep.model.lstm.lstm_univariate.build_model" title="Permalink to this definition">¶</a></dt>
@@ -444,12 +394,6 @@
 <em class="property">class </em><code class="sig-prename descclassname">nextstep.model.random_forest.</code><code class="sig-name descname">random_forest</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">config</span></em><span class="sig-paren">)</span><a class="headerlink" href="#nextstep.model.random_forest.random_forest" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#nextstep.model.base_model.base_model" title="nextstep.model.base_model.base_model"><code class="xref py py-class docutils literal notranslate"><span class="pre">nextstep.model.base_model.base_model</span></code></a></p>
 <p>random forest class.</p>
-<p>constructor method</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>config</strong> (<em>python dictionary</em>) – configuration for adaboost model</p>
-</dd>
-</dl>
 <dl class="py method">
 <dt id="nextstep.model.random_forest.random_forest.build_model">
 <code class="sig-name descname">build_model</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em><span class="sig-paren">)</span><a class="headerlink" href="#nextstep.model.random_forest.random_forest.build_model" title="Permalink to this definition">¶</a></dt>
@@ -484,21 +428,56 @@
 <dt id="nextstep.model.sarima.sarima">
 <em class="property">class </em><code class="sig-prename descclassname">nextstep.model.sarima.</code><code class="sig-name descname">sarima</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">config</span></em><span class="sig-paren">)</span><a class="headerlink" href="#nextstep.model.sarima.sarima" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#nextstep.model.base_model.base_model" title="nextstep.model.base_model.base_model"><code class="xref py py-class docutils literal notranslate"><span class="pre">nextstep.model.base_model.base_model</span></code></a></p>
-<p>constructor method</p>
+<p>sarima class.</p>
 <dl class="py method">
 <dt id="nextstep.model.sarima.sarima.autocorrelation">
 <code class="sig-name descname">autocorrelation</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">lags</span><span class="o">=</span><span class="default_value">20</span></em><span class="sig-paren">)</span><a class="headerlink" href="#nextstep.model.sarima.sarima.autocorrelation" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>plot autocorrelation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>pandas dataframe</em>) – dataset</p></li>
+<li><p><strong>lags</strong> (<em>int</em><em>, </em><em>default to be 20</em>) – number of lags needs to be considered for autocorrelation</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>data length must be larger than specified lags.</p>
+</div>
+</dd></dl>
 
 <dl class="py method">
 <dt id="nextstep.model.sarima.sarima.build_model">
 <code class="sig-name descname">build_model</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em><span class="sig-paren">)</span><a class="headerlink" href="#nextstep.model.sarima.sarima.build_model" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>building the sarima model, including train-test split and model evaluation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>pandas dataframe</em>) – dataset</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>fitted adaboost model</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt id="nextstep.model.sarima.sarima.partial_autocorrelation">
 <code class="sig-name descname">partial_autocorrelation</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">lags</span><span class="o">=</span><span class="default_value">20</span></em><span class="sig-paren">)</span><a class="headerlink" href="#nextstep.model.sarima.sarima.partial_autocorrelation" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>plot partial autocorrelation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>pandas dataframe</em>) – dataset</p></li>
+<li><p><strong>lags</strong> (<em>int</em><em>, </em><em>default to be 20</em>) – number of lags needs to be considered for partial autocorrelation</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>data length must be larger than specified lags.</p>
+</div>
+</dd></dl>
 
 <dl class="py method">
 <dt id="nextstep.model.sarima.sarima.predict">
@@ -513,12 +492,14 @@
 <dl class="py method">
 <dt id="nextstep.model.sarima.sarima.residual_density_plot">
 <code class="sig-name descname">residual_density_plot</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nextstep.model.sarima.sarima.residual_density_plot" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>plot residual density plot.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt id="nextstep.model.sarima.sarima.residual_plot">
 <code class="sig-name descname">residual_plot</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nextstep.model.sarima.sarima.residual_plot" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>plot residual.</p>
+</dd></dl>
 
 </dd></dl>
 

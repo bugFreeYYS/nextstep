@@ -6,6 +6,7 @@ class weather:
         self.config = config
 
     def get_weather_data(self):
+        """CSV will be written to the current directory."""
         retrieve_hist_data(self.config['api_key'],
                            self.config['location_list'],
                            self.config['start_date'],
@@ -15,20 +16,6 @@ class weather:
                            export_csv = True,
                            store_df = False)
         return None
-    def proprogate_half_hourly(self, data):
-        data = data.drop_duplicates()
-        # parse datetime columns
-        data['date_time'] = pd.to_datetime(data['date_time'])
-        # extract period and date
-        data['period'] = data['date_time'].apply(lambda x:x.hour)
-        data['date'] = data['date_time'].apply(lambda x:x.date())
-        # parsing
-        data2 = data.copy()
-        data['period'] = data['period'] * 2
-        data2['period'] = (data2['period'] * 2) + 1
-        full = pd.concat([data,data2]).sort_values(by = ['date', 'period'])
-        full["period"] = full["period"] + 1
-        return full
     
 
 
