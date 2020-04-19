@@ -1,10 +1,15 @@
 import pandas as pd
 
 class feature_engineering:
+    '''This is a fe class
+    '''
     def __init__(self):
         print('successfully substantiate feature engineering class.')
 
     def concat_columns(self, dataframe_list):
+        '''
+        concat
+        '''
         return pd.concat(dataframe_list, axis=1)
 
     def concat_rows(self, dataframe_list):

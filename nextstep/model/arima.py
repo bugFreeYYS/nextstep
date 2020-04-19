@@ -2,7 +2,7 @@ from statsmodels.tsa.arima_model import ARIMA
 from pandas.plotting import autocorrelation_plot
 from matplotlib import pyplot
 from statsmodels.graphics.tsaplots import plot_pacf
-from .base_model import base_model
+from nextstep.model.base_model import base_model
 import pandas as pd
 import sys
 
@@ -12,12 +12,24 @@ if not sys.warnoptions:
 
 
 class arima(base_model):
+    """arima class."""
     def __init__(self, config):
+        """constructor method
+
+        :param config: configuration for adaboost model
+        :type config: python dictionary
+        """
         super().__init__()
         self._config = config
         self._model = None
     
     def build_model(self, data):
+        """building the arima model, including train-test split and model evaluation.
+
+        :param data: dataset
+        :type data: pandas dataframe
+        :return: fitted adaboost model
+        """
         print('Building arima model.')
 
         size = int(len(data) * self._config['train_size'])
@@ -39,13 +51,25 @@ class arima(base_model):
         self._model = model_fitted
         return model
     
-    def predict(self, X_new):
-        return self._model.predict(X_new)
-    
     def predict_next_n(self, step):
+        """use fitted module for prediction.
+
+        :param step: the number of values to be predicted
+        :type X_new: int
+        """
         return self._model.forecast(steps = step)[0]
 
     def autocorrelation(self, data, number_of_time_step = 20):
+        """plot autocorrelation.
+
+        :param data: dataset
+        :type data: pandas dataframe
+        :param number_of_time_step: number of time step needs to be considered for autocorrelation
+        :type number_of_time_step: int, default to be 20
+
+        .. note::
+            data length must be larger than specified number_of_time_step.
+        """
         print("Autocorrelation")
         try:
             autocorrelation_plot(data[self._config['label_column']][:number_of_time_step])
@@ -55,6 +79,16 @@ class arima(base_model):
         return None
     
     def partial_autocorrelation(self, data, lags = 20):
+        """plot partial autocorrelation.
+
+        :param data: dataset
+        :type data: pandas dataframe
+        :param lags: number of lags needs to be considered for partial autocorrelation
+        :type lags: int, default to be 20
+
+        .. note::
+            data length must be larger than specified lags.
+        """
         print("Partial Autocorrelation")
         try:
             plot_pacf(data[self._config['label_column']], lags = lags)
@@ -64,6 +98,8 @@ class arima(base_model):
         return None
     
     def residual_plot(self):
+        """plot residual.
+        """
         print("Residual Plot")
         df = pd.DataFrame(self._model.resid)
         df.plot()
@@ -73,27 +109,12 @@ class arima(base_model):
         return None
     
     def residual_density_plot(self):
+        """plot residual density plot.
+        """
         print("Residual Density Plot")
         pd.DataFrame(self._model.resid).plot(kind='kde')
         pyplot.show()
         return None        
         
     
-if __name__ == "__main__":
-    import pandas as pd
-    data = pd.read_csv("../../../feature_mart.csv")
-    data = data[-100:]
-    
-    user_config = {'lag' : 2,
-                   'differencing' : 0,
-                   'window_size' : 2,
-                   'label_column' : 'USEP',
-                   'train_size' : 0.8,
-                   'seed' : 33}
-    arima_shell = arima(user_config)
-##    arima_shell.autocorrelation(data)
-##    arima_shell.partial_autocorrelation(data)
-    arima_shell.build_model(data)
-    print(arima_shell.predict_next_n(10))
-##    arima_shell.residual_plot()
     

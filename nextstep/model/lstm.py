@@ -1,7 +1,7 @@
 from keras.models import Sequential
 from keras.layers import LSTM
 from keras.layers import Dense
-from .base_model import base_model
+from nextstep.model.base_model import base_model
 import numpy as np
 import sys
 
@@ -10,12 +10,20 @@ if not sys.warnoptions:
     warnings.simplefilter("ignore")
 
 class lstm_univariate(base_model):
+    """
+    long short-term memory class.
+    """
     def __init__(self, config):
+        """constructor method
+
+        :param config: configuration for adaboost model
+        :type config: python dictionary
+        """
         super().__init__()
         self._config = config
         self._model = None
 
-    def split_sequence(self, sequence, n_steps):
+    def _split_sequence(self, sequence, n_steps):
         X, y = [], []
         for i in range(len(sequence)):
             end_ix = i + n_steps
@@ -27,6 +35,12 @@ class lstm_univariate(base_model):
         return np.array(X), np.array(y)
     
     def build_model(self, data):
+        """building the lstm model, including train-test split and model evaluation.
+
+        :param data: dataset
+        :type data: pandas dataframe
+        :return: fitted adaboost model
+        """
         print('Building LSTM model.')
         X, y = self.split_sequence(data[self._config['label_column']], self._config['n_steps'])
         size = int(len(data) * self._config['train_size'])
@@ -68,20 +82,11 @@ class lstm_univariate(base_model):
         return model
     
     def predict(self, X_new):
+        '''use fitted module for prediction.
+
+        :param X_new: data of shape (n_samples, n_features)
+        :type X_new: array-like
+        '''
         return self._model.predict(X_new)
 
     
-if __name__ == "__main__":
-    import pandas as pd
-    data = pd.read_csv("../../feature_mart.csv")
-    user_config = {'label_column' : 'USEP',
-                   'n_steps' : 7,
-                   'train_size' : 0.8,
-                   'n_neuron' : 5,
-                   'activation' : 'relu',
-                   'optimizer' : 'adam',
-                   'loss' : 'mse',
-                   'n_epochs' : 2}
-    
-    LSTM_shell = lstm_univariate(user_config)
-    LSTM_shell.build_model(data)
