@@ -154,8 +154,45 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="nextstep-feature-engineering-module">
-<h1>nextstep.feature_engineering module<a class="headerlink" href="#nextstep-feature-engineering-module" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="module-nextstep.feature_engineering">
+<span id="nextstep-feature-engineering-module"></span><h1>nextstep.feature_engineering module<a class="headerlink" href="#module-nextstep.feature_engineering" title="Permalink to this headline">¶</a></h1>
+<dl class="py function">
+<dt id="nextstep.feature_engineering.concat_columns">
+<code class="sig-prename descclassname">nextstep.feature_engineering.</code><code class="sig-name descname">concat_columns</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dataframe_list</span></em><span class="sig-paren">)</span><a class="headerlink" href="#nextstep.feature_engineering.concat_columns" title="Permalink to this definition">¶</a></dt>
+<dd><p>concat dataframes by columns.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>dataframe_list</strong> (<em>python list</em>) – list of pandas dataframes</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="nextstep.feature_engineering.concat_rows">
+<code class="sig-prename descclassname">nextstep.feature_engineering.</code><code class="sig-name descname">concat_rows</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">dataframe_list</span></em><span class="sig-paren">)</span><a class="headerlink" href="#nextstep.feature_engineering.concat_rows" title="Permalink to this definition">¶</a></dt>
+<dd><p>concat dataframes by rows.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>dataframe_list</strong> (<em>python list</em>) – list of pandas dataframes</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="nextstep.feature_engineering.join">
+<code class="sig-prename descclassname">nextstep.feature_engineering.</code><code class="sig-name descname">join</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">dataframe_list</span></em>, <em class="sig-param"><span class="n">on</span></em>, <em class="sig-param"><span class="n">how</span></em><span class="sig-paren">)</span><a class="headerlink" href="#nextstep.feature_engineering.join" title="Permalink to this definition">¶</a></dt>
+<dd><p>join dataframes at once.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataframe_list</strong> (<em>python list</em>) – list of pandas dataframes</p></li>
+<li><p><strong>on</strong> – join condition</p></li>
+<li><p><strong>how</strong> – join type</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
 </div>
 
 

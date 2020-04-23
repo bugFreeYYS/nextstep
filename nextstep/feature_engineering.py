@@ -1,32 +1,34 @@
 import pandas as pd
 
 def concat_columns(dataframe_list):
-    '''
+    """
     concat dataframes by columns.
 
     :param dataframe_list: list of pandas dataframes
     :type dataframe_list: python list
-    '''
+    
+    """
     return pd.concat(dataframe_list, axis=1)
 
 def concat_rows(self, dataframe_list):
-    '''
+    """
     concat dataframes by rows.
 
     :param dataframe_list: list of pandas dataframes
     :type dataframe_list: python list
-    '''
+
+    """
     return pd.concat(dataframe_list)
 
 def join(self, dataframe_list, on, how):
-    '''
+    """
     join dataframes at once.
 
     :param dataframe_list: list of pandas dataframes
     :type dataframe_list: python list
     :param on: join condition
     :param how: join type
-    '''
+    """
     main_df = dataframe_list[0]
     for df in dataframe_list[1:]:
         main_df = main_df.merge(df, on = on, how = how)

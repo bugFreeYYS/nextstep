@@ -1,5 +1,5 @@
 nextstep.feature_engineering module
 ====================================
 
-.. automodule: nextstep.feature_engineering
+.. automodule:: nextstep.feature_engineering
    :members:
