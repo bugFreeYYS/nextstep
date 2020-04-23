@@ -2,8 +2,17 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
+from sklearn.feature_selection import SelectFromModel
 from sklearn.feature_selection import SelectKBest
 from sklearn.feature_selection import RFE
+
+from sklearn.feature_selection import mutual_info_regression
+from sklearn.feature_selection import f_regression
+
+from sklearn.linear_model import LinearRegression
+from sklearn.tree import DecisionTreeRegressor
+from sklearn import svm
+from lightgbm import LGBMRegressor
 
 
 ###############
@@ -13,7 +22,7 @@ from sklearn.feature_selection import RFE
 
 def get_selector_from_SelectKBest(score_func, X, y, num_features=10):
     """a filter based feature selection method where the user specifies a metric and uses that to filter features
-
+    
     :param score_func: a function taking two arrays X and y, and returning a pair of arrays (scores, pvalues) or a single array with scores. For a list of available score_func, refer to the "See also" section on https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.SelectKBest.html.
     :param X: the training input samples
     :type X: pandas DataFrame of shape (n_samples, n_features)
@@ -34,7 +43,7 @@ def get_selector_from_SelectKBest(score_func, X, y, num_features=10):
 
 def get_features_from_SelectKBest(score_func, X, y, num_features=10, show_plot=True):
     """a filter based feature selection method where the user specifies a metric and uses that to filter features; also, this function displays the SelectKBest result with a plot, which facilitates identification of the "elbow" point   
-
+    
     :param score_func: a function taking two arrays X and y, and returning a pair of arrays (scores, pvalues) or a single array with scores. For a list of available score_func, refer to the "See also" section on https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.SelectKBest.html.
     :param X: the training input samples
     :type X: pandas DataFrame of shape (n_samples, n_features)
@@ -69,7 +78,7 @@ def get_features_from_SelectKBest(score_func, X, y, num_features=10, show_plot=T
         plt.ylabel("score", fontweight="bold")
         plt.title("Best {} features from SelectKBest".format(num_features), fontweight="bold")
         plt.show()
-
+        
     return scores_df
 
 
@@ -94,7 +103,7 @@ def get_selector_from_RFE(estimator, X, y, num_features=None, step=1, verbose=0)
     :param step: If greater than or equal to 1, then step corresponds to the (integer) number of features to remove at each iteration. If within (0.0, 1.0), then step corresponds to the percentage (rounded down) of features to remove at each iteration.
     :type step: int or float, optional (default=1)
     :param verbose: controls verbosity of output
-    :type verbose: int, (default=0)
+    :type verbose: int, optional (default=0)
     :return: the fitted RFE selector
     """
 
@@ -103,7 +112,7 @@ def get_selector_from_RFE(estimator, X, y, num_features=None, step=1, verbose=0)
     rfe_selector.fit(X, y)
 
     return rfe_selector
-
+    
 
 
 def get_features_from_RFE(estimator, X, y, num_features=None, step=1, verbose=0):
@@ -120,13 +129,13 @@ def get_features_from_RFE(estimator, X, y, num_features=None, step=1, verbose=0)
     :param step: If greater than or equal to 1, then step corresponds to the (integer) number of features to remove at each iteration. If within (0.0, 1.0), then step corresponds to the percentage (rounded down) of features to remove at each iteration.
     :type step: int or float, optional (default=1)
     :param verbose: controls verbosity of output
-    :type verbose: int, (default=0)
+    :type verbose: int, optional (default=0)
     :return: a list containing the best n features
     """
 
     # get the RFE selector
     rfe_selector = get_selector_from_RFE(estimator, X, y, num_features=num_features, step=step, verbose=verbose)
-
+    
     # obtain a list of selected features
     rfe_support = rfe_selector.get_support()
     rfe_features = X.loc[:,rfe_support].columns.tolist()
@@ -144,7 +153,7 @@ def get_features_from_RFE(estimator, X, y, num_features=None, step=1, verbose=0)
 def select_features_by_majority_voting(X, selectors_dict):  
     """
     combines the various feature selection tools and use majority voting to decide which features to keep. Only works on selectors with a get_support() function
-
+        
     :param X: the training input samples
     :type X: pandas DataFrame of shape (n_samples, n_features)
     :param selectors_dict: a dictionary with key being the name of a feature selection method, value being a selector object
@@ -171,3 +180,37 @@ def select_features_by_majority_voting(X, selectors_dict):
     return feature_selection_df
 
 
+
+def majority_voting(X, y, num_features=10, step=1, verbose=0):
+    """
+    Unlike select_features_by_majority_voting which allows users to customise the base selectors, this function further abstracts the feature selection process from the user by providing a set of pre-defined base feature selectors suitable for regression tasks. The pre-defined selectors consists of two from SelectKBest (f regression & mutual info regression), two from RFE (linear regression & SVR), and two from embedded method (regression tree & LGB regression)
+        
+    :param X: the training input samples
+    :type X: pandas DataFrame of shape (n_samples, n_features)
+    :param y: the target values
+    :type y: array-like of shape (n_samples,)
+    :param num_features: number of features to select for each base selector. If None, 10 features will be selected.
+    :type num_features: int or None, optional (default=None)
+    :param step: for RFE; if greater than or equal to 1, then step corresponds to the (integer) number of features to remove at each iteration. If within (0.0, 1.0), then step corresponds to the percentage (rounded down) of features to remove at each iteration.
+    :type step: int or float, optional (default=1)
+    :param verbose: for RFE; controls verbosity of output
+    :type verbose: int, optional (default=0)
+    :return: a pandas DataFrame ranked by the number of times a feature has been seleced by each of the pre-defined selectors; boolean columns indicating whether a feature has been selected by a particular selector.
+    """
+
+    kbest_f_regression = get_selector_from_SelectKBest(f_regression, X, y, num_features=num_features)
+    kbest_mutual_info_regression = get_selector_from_SelectKBest(mutual_info_regression, X, y, num_features=num_features)
+
+    rfe_linear_regression = get_selector_from_RFE(LinearRegression(), X, y, num_features=num_features, step=step, verbose=verbose)
+    rfe_svr = get_selector_from_RFE(svm.LinearSVR(), X, y, num_features=num_features, step=step, verbose=verbose)
+
+    regression_tree = SelectFromModel(DecisionTreeRegressor(), max_features=num_features).fit(X, y)
+    lgb_regressor = SelectFromModel(LGBMRegressor(), max_features=num_features).fit(X, y)
+
+    selectors_dict = {'kbest_f_regression':kbest_f_regression, 'kbest_mutual_info_regression':kbest_mutual_info_regression,
+                      'rfe_linear_regression':rfe_linear_regression, 'rfe_svr':rfe_svr, 'regression_tree':regression_tree,
+                      'lgb_regressor':lgb_regressor}
+
+    return select_features_by_majority_voting(X, selectors_dict)
+
+    
