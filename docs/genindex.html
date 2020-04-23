@@ -9,7 +9,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Index &mdash; nextstep 0.0.15 documentation</title>
+  <title>Index &mdash; nextstep 0.0.17 documentation</title>
   
 
   
@@ -85,7 +85,8 @@
 </ul>
 <p class="caption"><span class="caption-text">API Docs:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="FE.html">nextstep.feature_engineering module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="feature_engineering.html">nextstep.feature_engineering module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="feature_selection.html">nextstep.feature_selection module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="getData.html">nextstep.getData subpackage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="model.html">nextstep.model subpackage</a></li>
 </ul>
@@ -165,7 +166,7 @@
  | <a href="#P"><strong>P</strong></a>
  | <a href="#R"><strong>R</strong></a>
  | <a href="#S"><strong>S</strong></a>
- | <a href="#W"><strong>W</strong></a>
+ | <a href="#X"><strong>X</strong></a>
  
 </div>
 <h2 id="A">A</h2>
@@ -202,6 +203,8 @@
 </li>
         <li><a href="model.html#nextstep.model.sarima.sarima.build_model">(nextstep.model.sarima.sarima method)</a>
 </li>
+        <li><a href="model.html#nextstep.model.XGboost.XGboost.build_model">(nextstep.model.XGboost.XGboost method)</a>
+</li>
       </ul></li>
   </ul></td>
 </tr></table>
@@ -217,7 +220,17 @@
 <h2 id="G">G</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="getData.html#nextstep.getData.weather.weather.get_weather_data">get_weather_data() (nextstep.getData.weather.weather method)</a>
+      <li><a href="feature_selection.html#nextstep.feature_selection.get_features_from_RFE">get_features_from_RFE() (in module nextstep.feature_selection)</a>
+</li>
+      <li><a href="feature_selection.html#nextstep.feature_selection.get_features_from_SelectKBest">get_features_from_SelectKBest() (in module nextstep.feature_selection)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="feature_selection.html#nextstep.feature_selection.get_selector_from_RFE">get_selector_from_RFE() (in module nextstep.feature_selection)</a>
+</li>
+      <li><a href="feature_selection.html#nextstep.feature_selection.get_selector_from_SelectKBest">get_selector_from_SelectKBest() (in module nextstep.feature_selection)</a>
+</li>
+      <li><a href="getData.html#nextstep.getData.weather.get_weather_data">get_weather_data() (in module nextstep.getData.weather)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -233,10 +246,14 @@
 <h2 id="M">M</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="feature_selection.html#nextstep.feature_selection.majority_voting">majority_voting() (in module nextstep.feature_selection)</a>
+</li>
       <li>
     module
 
       <ul>
+        <li><a href="feature_selection.html#module-nextstep.feature_selection">nextstep.feature_selection</a>
+</li>
         <li><a href="getData.html#module-nextstep.getData.oil">nextstep.getData.oil</a>
 </li>
         <li><a href="getData.html#module-nextstep.getData.weather">nextstep.getData.weather</a>
@@ -253,6 +270,8 @@
 </li>
         <li><a href="model.html#module-nextstep.model.sarima">nextstep.model.sarima</a>
 </li>
+        <li><a href="model.html#module-nextstep.model.XGboost">nextstep.model.XGboost</a>
+</li>
       </ul></li>
   </ul></td>
 </tr></table>
@@ -260,6 +279,13 @@
 <h2 id="N">N</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    nextstep.feature_selection
+
+      <ul>
+        <li><a href="feature_selection.html#module-nextstep.feature_selection">module</a>
+</li>
+      </ul></li>
       <li>
     nextstep.getData.oil
 
@@ -318,6 +344,13 @@
         <li><a href="model.html#module-nextstep.model.sarima">module</a>
 </li>
       </ul></li>
+      <li>
+    nextstep.model.XGboost
+
+      <ul>
+        <li><a href="model.html#module-nextstep.model.XGboost">module</a>
+</li>
+      </ul></li>
   </ul></td>
 </tr></table>
 
@@ -346,6 +379,8 @@
         <li><a href="model.html#nextstep.model.random_forest.random_forest.predict">(nextstep.model.random_forest.random_forest method)</a>
 </li>
         <li><a href="model.html#nextstep.model.sarima.sarima.predict">(nextstep.model.sarima.sarima method)</a>
+</li>
+        <li><a href="model.html#nextstep.model.XGboost.XGboost.predict">(nextstep.model.XGboost.XGboost method)</a>
 </li>
       </ul></li>
   </ul></td>
@@ -386,6 +421,8 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="model.html#nextstep.model.sarima.sarima">sarima (class in nextstep.model.sarima)</a>
 </li>
+      <li><a href="feature_selection.html#nextstep.feature_selection.select_features_by_majority_voting">select_features_by_majority_voting() (in module nextstep.feature_selection)</a>
+</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="model.html#nextstep.model.base_model.base_model.split">split() (nextstep.model.base_model.base_model method)</a>
@@ -395,10 +432,10 @@
   </ul></td>
 </tr></table>
 
-<h2 id="W">W</h2>
+<h2 id="X">X</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="getData.html#nextstep.getData.weather.weather">weather (class in nextstep.getData.weather)</a>
+      <li><a href="model.html#nextstep.model.XGboost.XGboost">XGboost (class in nextstep.model.XGboost)</a>
 </li>
   </ul></td>
 </tr></table>
