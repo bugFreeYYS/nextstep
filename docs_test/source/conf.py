@@ -23,7 +23,7 @@ copyright = '2020, yangyuesong'
 author = 'yangyuesong'
 
 # The full version, including alpha/beta/rc tags
-release = '0.0.15'
+release = '0.0.17'
 
 
 # -- General configuration ---------------------------------------------------

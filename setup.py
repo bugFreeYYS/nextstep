@@ -1,7 +1,7 @@
 import setuptools
 
-with open("README.md", "r") as fh:
-    long_description = fh.read()
+#with open("README.md", "r") as fh:
+    #long_description = fh.read()
 
 setuptools.setup(
     name="nextstep",
@@ -9,7 +9,6 @@ setuptools.setup(
     author="Yang Yuesong",
     author_email="yangyuesongyys@gmail.com",
     description="USEP price prediction",
-    long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/YangYuesong0323/nextstep",
     packages=setuptools.find_packages(),
@@ -22,5 +21,7 @@ setuptools.setup(
         'Keras == 2.3.1',
         'pandas == 1.0.1',
         'numpy == 1.18.1',
-        'scikit-learn == 0.22.1']
+        'scikit-learn == 0.22.1',
+        'lightgbm == 2.3.1',
+        'matplotlib == 3.0.3']
 )

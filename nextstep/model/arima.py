@@ -1,14 +1,12 @@
 from statsmodels.tsa.arima_model import ARIMA
 from pandas.plotting import autocorrelation_plot
-from matplotlib import pyplot
+import matplotlib
+matplotlib.use('TkAgg')
+import matplotlib.pyplot as plt
 from statsmodels.graphics.tsaplots import plot_pacf
 from nextstep.model.base_model import base_model
 import pandas as pd
 import sys
-
-if not sys.warnoptions:
-    import warnings
-    warnings.simplefilter("ignore")
 
 
 class arima(base_model):

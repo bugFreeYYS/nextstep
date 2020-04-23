@@ -9,14 +9,6 @@ base\_model
    :undoc-members:
    :show-inheritance:
 
-XGboost
------------------------------
-
-.. automodule:: nextstep.model.XGboost
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
 adaboost
 ------------------------------
 
@@ -24,19 +16,6 @@ adaboost
    :members:
    :undoc-members:
    :show-inheritance:
-
-example config
-::   
-
-   user_config = {
-      'label_column' : 'USEP', # label column name
-      'train_size' : 0.9, # train-test split
-      'seed' : 33, 
-      'base_estimator': random_forest_model, # a fitted model
-      'n_estimators' : 10, # number of estimators
-      'learning_rate' : 1, # learning rate
-      'loss' : 'square' # loss function
-      } 
 
 arima
 ---------------------------
@@ -67,6 +46,14 @@ sarima
 ----------------------------
 
 .. automodule:: nextstep.model.sarima
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+XGboost
+-----------------------------
+
+.. automodule:: nextstep.model.XGboost
    :members:
    :undoc-members:
    :show-inheritance:

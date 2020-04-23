@@ -1,5 +1,7 @@
 import pandas as pd
 import numpy as np
+import matplotlib
+matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
 
 from sklearn.feature_selection import SelectFromModel
@@ -12,7 +14,10 @@ from sklearn.feature_selection import f_regression
 from sklearn.linear_model import LinearRegression
 from sklearn.tree import DecisionTreeRegressor
 from sklearn import svm
-from lightgbm import LGBMRegressor
+try:
+    from lightgbm import LGBMRegressor
+except:
+    pass
 
 
 ###############
@@ -93,7 +98,7 @@ def get_selector_from_RFE(estimator, X, y, num_features=None, step=1, verbose=0)
     """
     a wrapper based feature selection method that considers the selection of a set of features as a search problem. The algorithm selects features by recursively considering smaller and smaller sets of features.
 
-    :param estimator: an sklearn supervised learning estimator with a fit method and a coef_ attribute or through a feature_importances_ attribute.
+    :param estimator: an sklearn supervised learning estimator with a fit method and a coef attribute or through a feature_importances attribute.
     :param X: the training input samples
     :type X: pandas DataFrame of shape (n_samples, n_features)
     :param y: the target values
@@ -119,7 +124,7 @@ def get_features_from_RFE(estimator, X, y, num_features=None, step=1, verbose=0)
     """
     a wrapper based feature selection method that considers the selection of a set of features as a search problem. The algorithm selects features by recursively considering smaller and smaller sets of features.
 
-    :param estimator: an sklearn supervised learning estimator with a fit method and a coef_ attribute or through a feature_importances_ attribute.
+    :param estimator: an sklearn supervised learning estimator with a fit method and a coef attribute or through a feature_importances attribute.
     :param X: the training input samples
     :type X: pandas DataFrame of shape (n_samples, n_features)
     :param y: the target values

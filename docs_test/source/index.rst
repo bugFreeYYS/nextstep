@@ -25,10 +25,11 @@ It evolves into a machine learning prediction toolkit.
    installation
 
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 4
    :caption: API Docs:
    
-   FE
+   feature_engineering
+   feature_selection
    getData
    model
 
