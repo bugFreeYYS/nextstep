@@ -1,13 +1,12 @@
 import pandas as pd
 from statsmodels.tsa.statespace.sarimax import SARIMAX
 from statsmodels.graphics.tsaplots import plot_pacf, plot_acf
-from matplotlib import pyplot
+import matplotlib
+matplotlib.use('TkAgg')
+import matplotlib.pyplot as plt
 from nextstep.model.base_model import base_model
 import sys
 
-if not sys.warnoptions:
-    import warnings
-    warnings.simplefilter("ignore")
 
 class sarima(base_model):
     """sarima class."""
@@ -92,7 +91,7 @@ class sarima(base_model):
         print("Partial Autocorrelation:")
         try:
             plot_pacf(data[self._config['label_column']], lags = lags)
-            pyplot.show()
+            plt.show()
         except:
             print('Data time step is below 20, please specify paramter lags to be below 20.')
         return None
@@ -104,7 +103,7 @@ class sarima(base_model):
         df = pd.DataFrame(self._model.resid)
         df.plot()
         df.plot(kind='kde')
-        pyplot.show()
+        plt.show()
         print("residual mean is {}".format(sum(self._model.resid)/len(self._model.resid)))
         return None
     
@@ -113,7 +112,7 @@ class sarima(base_model):
         """
         print("Residual Density Plot:")
         pd.DataFrame(self._model.resid).plot(kind='kde')
-        pyplot.show()
+        plt.show()
         return None        
         
 

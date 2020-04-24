@@ -1,0 +1,328 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>nextstep.feature_selection module &mdash; nextstep 0.0.17 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="nextstep.getData subpackage" href="getData.html" />
+    <link rel="prev" title="nextstep.feature_engineering module" href="feature_engineering.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> nextstep
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Installation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Docs:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="feature_engineering.html">nextstep.feature_engineering module</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">nextstep.feature_selection module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getData.html">nextstep.getData subpackage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model.html">nextstep.model subpackage</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">nextstep</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>nextstep.feature_selection module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/feature_selection.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-nextstep.feature_selection">
+<span id="nextstep-feature-selection-module"></span><h1>nextstep.feature_selection module<a class="headerlink" href="#module-nextstep.feature_selection" title="Permalink to this headline">¶</a></h1>
+<dl class="py function">
+<dt id="nextstep.feature_selection.get_features_from_RFE">
+<code class="sig-prename descclassname">nextstep.feature_selection.</code><code class="sig-name descname">get_features_from_RFE</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">estimator</span></em>, <em class="sig-param"><span class="n">X</span></em>, <em class="sig-param"><span class="n">y</span></em>, <em class="sig-param"><span class="n">num_features</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">step</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">verbose</span><span class="o">=</span><span class="default_value">0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#nextstep.feature_selection.get_features_from_RFE" title="Permalink to this definition">¶</a></dt>
+<dd><p>a wrapper based feature selection method that considers the selection of a set of features as a search problem. The algorithm selects features by recursively considering smaller and smaller sets of features.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>estimator</strong> – an sklearn supervised learning estimator with a fit method and a coef attribute or through a feature_importances attribute.</p></li>
+<li><p><strong>X</strong> (<em>pandas DataFrame of shape</em><em> (</em><em>n_samples</em><em>, </em><em>n_features</em><em>)</em>) – the training input samples</p></li>
+<li><p><strong>y</strong> (<em>array-like of shape</em><em> (</em><em>n_samples</em><em>,</em><em>)</em>) – the target values</p></li>
+<li><p><strong>num_features</strong> (<em>int</em><em> or </em><em>None</em><em>, </em><em>optional</em><em> (</em><em>default=None</em><em>)</em>) – number of features to select. If None, half will be selected.</p></li>
+<li><p><strong>step</strong> (<em>int</em><em> or </em><em>float</em><em>, </em><em>optional</em><em> (</em><em>default=1</em><em>)</em>) – If greater than or equal to 1, then step corresponds to the (integer) number of features to remove at each iteration. If within (0.0, 1.0), then step corresponds to the percentage (rounded down) of features to remove at each iteration.</p></li>
+<li><p><strong>verbose</strong> (<em>int</em><em>, </em><em>optional</em><em> (</em><em>default=0</em><em>)</em>) – controls verbosity of output</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a list containing the best n features</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="nextstep.feature_selection.get_features_from_SelectKBest">
+<code class="sig-prename descclassname">nextstep.feature_selection.</code><code class="sig-name descname">get_features_from_SelectKBest</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">score_func</span></em>, <em class="sig-param"><span class="n">X</span></em>, <em class="sig-param"><span class="n">y</span></em>, <em class="sig-param"><span class="n">num_features</span><span class="o">=</span><span class="default_value">10</span></em>, <em class="sig-param"><span class="n">show_plot</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#nextstep.feature_selection.get_features_from_SelectKBest" title="Permalink to this definition">¶</a></dt>
+<dd><p>a filter based feature selection method where the user specifies a metric and uses that to filter features; also, this function displays the SelectKBest result with a plot, which facilitates identification of the “elbow” point</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>score_func</strong> – a function taking two arrays X and y, and returning a pair of arrays (scores, pvalues) or a single array with scores. For a list of available score_func, refer to the “See also” section on <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.SelectKBest.html">https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.SelectKBest.html</a>.</p></li>
+<li><p><strong>X</strong> (<em>pandas DataFrame of shape</em><em> (</em><em>n_samples</em><em>, </em><em>n_features</em><em>)</em>) – the training input samples</p></li>
+<li><p><strong>y</strong> (<em>array-like of shape</em><em> (</em><em>n_samples</em><em>,</em><em>)</em>) – the target values</p></li>
+<li><p><strong>num_features</strong> (<em>int</em><em>, </em><em>optional</em><em> (</em><em>default=10</em><em>)</em>) – number of top features to select</p></li>
+<li><p><strong>show_plot</strong> (<em>boolean</em><em>, </em><em>optional</em><em> (</em><em>default=True</em><em>)</em>) – if set to True, a plot of the scores of the k best features is displayed.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a pandas Dataframe containing the best k features, sorted by score in descending order</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="nextstep.feature_selection.get_selector_from_RFE">
+<code class="sig-prename descclassname">nextstep.feature_selection.</code><code class="sig-name descname">get_selector_from_RFE</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">estimator</span></em>, <em class="sig-param"><span class="n">X</span></em>, <em class="sig-param"><span class="n">y</span></em>, <em class="sig-param"><span class="n">num_features</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">step</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">verbose</span><span class="o">=</span><span class="default_value">0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#nextstep.feature_selection.get_selector_from_RFE" title="Permalink to this definition">¶</a></dt>
+<dd><p>a wrapper based feature selection method that considers the selection of a set of features as a search problem. The algorithm selects features by recursively considering smaller and smaller sets of features.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>estimator</strong> – an sklearn supervised learning estimator with a fit method and a coef attribute or through a feature_importances attribute.</p></li>
+<li><p><strong>X</strong> (<em>pandas DataFrame of shape</em><em> (</em><em>n_samples</em><em>, </em><em>n_features</em><em>)</em>) – the training input samples</p></li>
+<li><p><strong>y</strong> (<em>array-like of shape</em><em> (</em><em>n_samples</em><em>,</em><em>)</em>) – the target values</p></li>
+<li><p><strong>num_features</strong> (<em>int</em><em> or </em><em>None</em><em>, </em><em>optional</em><em> (</em><em>default=None</em><em>)</em>) – number of features to select. If None, half will be selected.</p></li>
+<li><p><strong>step</strong> (<em>int</em><em> or </em><em>float</em><em>, </em><em>optional</em><em> (</em><em>default=1</em><em>)</em>) – If greater than or equal to 1, then step corresponds to the (integer) number of features to remove at each iteration. If within (0.0, 1.0), then step corresponds to the percentage (rounded down) of features to remove at each iteration.</p></li>
+<li><p><strong>verbose</strong> (<em>int</em><em>, </em><em>optional</em><em> (</em><em>default=0</em><em>)</em>) – controls verbosity of output</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the fitted RFE selector</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="nextstep.feature_selection.get_selector_from_SelectKBest">
+<code class="sig-prename descclassname">nextstep.feature_selection.</code><code class="sig-name descname">get_selector_from_SelectKBest</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">score_func</span></em>, <em class="sig-param"><span class="n">X</span></em>, <em class="sig-param"><span class="n">y</span></em>, <em class="sig-param"><span class="n">num_features</span><span class="o">=</span><span class="default_value">10</span></em><span class="sig-paren">)</span><a class="headerlink" href="#nextstep.feature_selection.get_selector_from_SelectKBest" title="Permalink to this definition">¶</a></dt>
+<dd><p>a filter based feature selection method where the user specifies a metric and uses that to filter features</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>score_func</strong> – a function taking two arrays X and y, and returning a pair of arrays (scores, pvalues) or a single array with scores. For a list of available score_func, refer to the “See also” section on <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.SelectKBest.html">https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.SelectKBest.html</a>.</p></li>
+<li><p><strong>X</strong> (<em>pandas DataFrame of shape</em><em> (</em><em>n_samples</em><em>, </em><em>n_features</em><em>)</em>) – the training input samples</p></li>
+<li><p><strong>y</strong> (<em>array-like of shape</em><em> (</em><em>n_samples</em><em>,</em><em>)</em>) – the target values</p></li>
+<li><p><strong>num_features</strong> (<em>int</em><em>, </em><em>optional</em><em> (</em><em>default=10</em><em>)</em>) – number of top features to select</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the fitted SelectKBest selector</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="nextstep.feature_selection.majority_voting">
+<code class="sig-prename descclassname">nextstep.feature_selection.</code><code class="sig-name descname">majority_voting</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">X</span></em>, <em class="sig-param"><span class="n">y</span></em>, <em class="sig-param"><span class="n">num_features</span><span class="o">=</span><span class="default_value">10</span></em>, <em class="sig-param"><span class="n">step</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">verbose</span><span class="o">=</span><span class="default_value">0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#nextstep.feature_selection.majority_voting" title="Permalink to this definition">¶</a></dt>
+<dd><p>Unlike select_features_by_majority_voting which allows users to customise the base selectors, this function further abstracts the feature selection process from the user by providing a set of pre-defined base feature selectors suitable for regression tasks. The pre-defined selectors consists of two from SelectKBest (f regression &amp; mutual info regression), two from RFE (linear regression &amp; SVR), and two from embedded method (regression tree &amp; LGB regression)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>pandas DataFrame of shape</em><em> (</em><em>n_samples</em><em>, </em><em>n_features</em><em>)</em>) – the training input samples</p></li>
+<li><p><strong>y</strong> (<em>array-like of shape</em><em> (</em><em>n_samples</em><em>,</em><em>)</em>) – the target values</p></li>
+<li><p><strong>num_features</strong> (<em>int</em><em> or </em><em>None</em><em>, </em><em>optional</em><em> (</em><em>default=None</em><em>)</em>) – number of features to select for each base selector. If None, 10 features will be selected.</p></li>
+<li><p><strong>step</strong> (<em>int</em><em> or </em><em>float</em><em>, </em><em>optional</em><em> (</em><em>default=1</em><em>)</em>) – for RFE; if greater than or equal to 1, then step corresponds to the (integer) number of features to remove at each iteration. If within (0.0, 1.0), then step corresponds to the percentage (rounded down) of features to remove at each iteration.</p></li>
+<li><p><strong>verbose</strong> (<em>int</em><em>, </em><em>optional</em><em> (</em><em>default=0</em><em>)</em>) – for RFE; controls verbosity of output</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a pandas DataFrame ranked by the number of times a feature has been seleced by each of the pre-defined selectors; boolean columns indicating whether a feature has been selected by a particular selector.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="nextstep.feature_selection.select_features_by_majority_voting">
+<code class="sig-prename descclassname">nextstep.feature_selection.</code><code class="sig-name descname">select_features_by_majority_voting</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">X</span></em>, <em class="sig-param"><span class="n">selectors_dict</span></em><span class="sig-paren">)</span><a class="headerlink" href="#nextstep.feature_selection.select_features_by_majority_voting" title="Permalink to this definition">¶</a></dt>
+<dd><p>combines the various feature selection tools and use majority voting to decide which features to keep. Only works on selectors with a get_support() function</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>pandas DataFrame of shape</em><em> (</em><em>n_samples</em><em>, </em><em>n_features</em><em>)</em>) – the training input samples</p></li>
+<li><p><strong>selectors_dict</strong> – a dictionary with key being the name of a feature selection method, value being a selector object</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a pandas DataFrame ranked by the number of times a feature has been seleced by the various selectors; boolean columns indicating whether a feature has been selected by a particular selector.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="getData.html" class="btn btn-neutral float-right" title="nextstep.getData subpackage" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="feature_engineering.html" class="btn btn-neutral float-left" title="nextstep.feature_engineering module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, yangyuesong
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

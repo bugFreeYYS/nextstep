@@ -39,7 +39,7 @@ class base_model:
         return X_train, X_test, y_train, y_test
     
     def evaluation(self, y_pre, y_true):
-        """model evaluation method. Metrics include MAE, MSE and RMSE
+        """model evaluation method. Metrics include MAE, MSE and RMSE.
         
         :param y_pre: predicted values
         :type y_pre: array-like, such as python list

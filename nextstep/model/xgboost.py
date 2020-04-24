@@ -1,4 +1,7 @@
-import xgboost as xgb
+try:
+    import xgboost as xgb
+except:
+    pass
 from nextstep.model.base_model import base_model
 
 
