@@ -20,7 +20,7 @@ setuptools.setup(
         'dataflows == 0.0.71',
         'Keras == 2.3.1',
         'pandas == 1.0.1',
-        'numpy == 1.18.1',
+        'numpy == 1.22.0',
         'scikit-learn == 0.22.1',
         'lightgbm == 2.3.1',
         'matplotlib == 3.0.3']
