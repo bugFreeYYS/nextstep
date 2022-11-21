@@ -15,7 +15,7 @@ setuptools.setup(
     python_requires='>=3.6',
     install_requires = [
         'wwo-hist == 0.0.4',
-        'tensorflow == 2.1.0',
+        'tensorflow == 2.9.3',
         'statsmodels == 0.11.0',
         'dataflows == 0.0.71',
         'Keras == 2.3.1',
